@@ -55,7 +55,7 @@ public final class MxEngine extends Engine {
             JnaUtils.setNumpyMode(JnaUtils.NumpyMode.GLOBAL_ON);
 
             // Workaround MXNet shutdown crash issue
-            Runtime.getRuntime().addShutdownHook(new Thread(JnaUtils::waitAll)); // NOPMD
+            //Runtime.getRuntime().addShutdownHook(new Thread(JnaUtils::waitAll)); // NOPMD
 
             // load extra MXNet library
             String paths = Utils.getEnvOrSystemProperty("MXNET_EXTRA_LIBRARY_PATH");

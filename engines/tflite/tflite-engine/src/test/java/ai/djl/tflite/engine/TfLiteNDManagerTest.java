@@ -25,7 +25,7 @@ public class TfLiteNDManagerTest {
     @Test
     public void testNDArray() {
         TestRequirements.notWindows();
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         try (NDManager manager = TfLiteNDManager.getSystemManager().newSubManager()) {
             NDArray zeros = manager.zeros(new Shape(1, 2));

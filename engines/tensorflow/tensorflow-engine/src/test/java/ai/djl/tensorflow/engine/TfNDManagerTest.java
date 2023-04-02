@@ -28,7 +28,7 @@ public class TfNDManagerTest {
 
     @Test
     public void testNDArray() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         try (NDManager manager = NDManager.newBaseManager()) {
             NDArray array = manager.create("string");

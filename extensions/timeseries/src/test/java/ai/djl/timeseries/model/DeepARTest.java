@@ -65,7 +65,7 @@ public class DeepARTest {
     @BeforeClass
     public void setUp() {
         // TODO: Remove this once we support PyTorch support for timeseries extension
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     @Test

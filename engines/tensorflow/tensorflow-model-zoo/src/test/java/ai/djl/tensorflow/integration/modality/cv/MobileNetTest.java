@@ -35,7 +35,7 @@ public class MobileNetTest {
 
     @Test
     public void testMobileNetV2() throws IOException, ModelException, TranslateException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         Criteria<Image, Classifications> criteria =
                 Criteria.builder()

@@ -25,7 +25,7 @@ public class MxModelZooCoverageTest {
 
     @Test
     public void test() throws IOException, ReflectiveOperationException, URISyntaxException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         // mxnet-model-zoo
         CoverageUtils.testGetterSetters(MxModelZoo.class);

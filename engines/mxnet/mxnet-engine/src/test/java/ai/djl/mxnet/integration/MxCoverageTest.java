@@ -25,7 +25,7 @@ public class MxCoverageTest {
 
     @Test
     public void test() throws IOException, ReflectiveOperationException, URISyntaxException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         // mxnet-engine
         CoverageUtils.testGetterSetters(MxEngine.class);

@@ -26,7 +26,7 @@ public class JniUtilsTest {
 
     @BeforeClass
     public void setUp() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     @Test

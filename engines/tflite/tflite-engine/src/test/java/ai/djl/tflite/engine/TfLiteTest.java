@@ -36,7 +36,7 @@ public class TfLiteTest {
     @Test
     void testTflite() throws IOException, TranslateException, ModelException {
         TestRequirements.notWindows();
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         Criteria<Image, Classifications> criteria =
                 Criteria.builder()

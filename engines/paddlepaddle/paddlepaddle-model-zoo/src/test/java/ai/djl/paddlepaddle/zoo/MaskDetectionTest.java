@@ -41,7 +41,7 @@ public class MaskDetectionTest {
 
     @Test
     public void testMaskDetection() throws IOException, ModelException, TranslateException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         String url =
                 "https://raw.githubusercontent.com/PaddlePaddle/PaddleHub/release/v1.5/demo/mask_detection/python/images/mask.jpg";

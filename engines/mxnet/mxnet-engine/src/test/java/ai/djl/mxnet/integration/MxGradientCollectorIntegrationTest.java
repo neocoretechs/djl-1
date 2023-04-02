@@ -35,7 +35,7 @@ public class MxGradientCollectorIntegrationTest {
 
     @Test
     public void testMxAutograd() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         try (Model model = Model.newInstance("model");
                 NDManager manager = model.getNDManager()) {

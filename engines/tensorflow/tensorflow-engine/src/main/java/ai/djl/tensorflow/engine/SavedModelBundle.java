@@ -142,11 +142,13 @@ public class SavedModelBundle implements AutoCloseable {
         if (closed.getAndSet(true)) {
             return;
         }
-        if (graphHandle != null && !graphHandle.isNull()) {
-            graphHandle.close();
+        if (graphHandle != null) {
+            graphHandle.delete();
+            graphHandle = null;
         }
-        if (sessionHandle != null && !sessionHandle.isNull()) {
-            sessionHandle.close();
+        if (sessionHandle != null) {
+            sessionHandle.delete();
+            sessionHandle = null;
         }
         metaGraphDef = null;
     }

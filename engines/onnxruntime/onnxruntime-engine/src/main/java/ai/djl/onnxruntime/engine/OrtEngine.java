@@ -41,23 +41,23 @@ public final class OrtEngine extends Engine {
 
     private OrtEngine() {
         // init OrtRuntime
-        OrtEnvironment.ThreadingOptions options = new OrtEnvironment.ThreadingOptions();
-        try {
-            Integer interOpThreads = Integer.getInteger("ai.djl.onnxruntime.num_interop_threads");
-            Integer intraOpsThreads = Integer.getInteger("ai.djl.onnxruntime.num_threads");
-            if (interOpThreads != null) {
-                options.setGlobalInterOpNumThreads(interOpThreads);
-            }
-            if (intraOpsThreads != null) {
-                options.setGlobalIntraOpNumThreads(intraOpsThreads);
-            }
+        //OrtEnvironment.ThreadingOptions options = new OrtEnvironment.ThreadingOptions();
+        //try {
+            //Integer interOpThreads = Integer.getInteger("ai.djl.onnxruntime.num_interop_threads");
+            //Integer intraOpsThreads = Integer.getInteger("ai.djl.onnxruntime.num_threads");
+            //if (interOpThreads != null) {
+            //    options.setGlobalInterOpNumThreads(interOpThreads);
+            //}
+            //if (intraOpsThreads != null) {
+            //    options.setGlobalIntraOpNumThreads(intraOpsThreads);
+            //}
             OrtLoggingLevel logging = OrtLoggingLevel.ORT_LOGGING_LEVEL_WARNING;
             String name = OrtEnvironment.DEFAULT_NAME;
-            this.env = OrtEnvironment.getEnvironment(logging, name, options);
-        } catch (OrtException e) {
-            options.close();
-            throw new AssertionError("Failed to config OrtEnvironment", e);
-        }
+            this.env = OrtEnvironment.getEnvironment(logging, name/*, options*/);
+        //} catch (OrtException e) {
+            //options.close();
+           //throw new AssertionError("Failed to config OrtEnvironment", e);
+        //}
     }
 
     static Engine newInstance() {

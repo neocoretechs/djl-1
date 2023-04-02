@@ -23,7 +23,7 @@ public class MxBackendOptimizationTest {
 
     @Test
     public void testOptimizedFor() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         // TODO: Add Customized plugin test
         try (MxNDManager manager = (MxNDManager) NDManager.newBaseManager()) {

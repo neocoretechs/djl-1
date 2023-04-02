@@ -38,7 +38,7 @@ public class TransformerTranslatorTest {
     @Test
     public void testTransformerTranslator() throws IOException, TranslateException, ModelException {
         // TODO: Remove this once we support PyTorch support for timeseries extension
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         String modelUrl = "https://resources.djl.ai/test-models/mxnet/timeseries/transformer.zip";
         Map<String, Object> arguments = new ConcurrentHashMap<>();

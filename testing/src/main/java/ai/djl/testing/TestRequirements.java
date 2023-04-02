@@ -69,4 +69,19 @@ public final class TestRequirements {
             throw new SkipException("This test requires a non-arm os.");
         }
     }
+
+	public static void engine(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void engine(String string, String string2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void engine(String string, String string2, String string3) {
+		// TODO Auto-generated method stub
+		
+	}
 }

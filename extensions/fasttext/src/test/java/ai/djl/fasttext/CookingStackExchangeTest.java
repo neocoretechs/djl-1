@@ -57,7 +57,7 @@ public class CookingStackExchangeTest {
     @BeforeClass
     public void setUp() {
         TestRequirements.notWindows(); // fastText is not supported on windows
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     @Test

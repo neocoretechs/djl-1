@@ -37,7 +37,7 @@ public class LgbmModelTest {
 
     @Test
     public void testLoad() throws ModelException, IOException, TranslateException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
         Path modelDir = Paths.get("build/model");
         DownloadUtils.download(
                 "https://resources.djl.ai/test-models/lightgbm/quadratic.txt",

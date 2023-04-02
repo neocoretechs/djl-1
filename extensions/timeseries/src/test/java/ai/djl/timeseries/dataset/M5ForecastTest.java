@@ -46,7 +46,7 @@ public class M5ForecastTest {
     @BeforeClass
     public void setUp() {
         // TODO: Remove this once we support PyTorch support for timeseries extension
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     /*

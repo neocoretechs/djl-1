@@ -151,12 +151,12 @@ public class OrtSymbolBlock extends AbstractSymbolBlock implements AutoCloseable
     @SuppressWarnings("unchecked")
     private NDArray seq2Nd(OnnxSequence seq) {
         try {
-            List<OnnxMap> values = (List<OnnxMap>) seq.getValue();
+            List<Object> values = seq.getValue();
             DataType dp;
             List<Object> finalData = new ArrayList<>();
             OnnxJavaType type = seq.getInfo().mapInfo.valueType;
-            for (OnnxMap map : values) {
-                finalData.addAll(((Map<Object, Object>) map.getValue()).values());
+            for (Object map : values) {
+                finalData.addAll(((Map<Object, Object>) ((OnnxMap)map).getValue()).values());
             }
             Shape shape = new Shape(values.size(), finalData.size() / values.size());
             ByteBuffer buffer = ByteBuffer.allocate(finalData.size() * type.size);
@@ -194,7 +194,7 @@ public class OrtSymbolBlock extends AbstractSymbolBlock implements AutoCloseable
     private NDList seq2NdList(OnnxSequence sequence) {
         try {
             NDList list = new NDList();
-            for (OnnxValue value : sequence.getValue()) {
+            for (Object value : sequence.getValue()) {
                 list.add(manager.createInternal((OnnxTensor) value));
             }
             return list;

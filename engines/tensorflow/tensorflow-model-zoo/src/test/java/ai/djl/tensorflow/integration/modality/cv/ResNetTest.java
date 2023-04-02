@@ -35,7 +35,7 @@ public class ResNetTest {
 
     @Test
     public void testResNet50V1() throws IOException, ModelException, TranslateException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         Criteria<Image, Classifications> criteria =
                 Criteria.builder()

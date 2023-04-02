@@ -47,7 +47,7 @@ public class TfSsdTest {
 
     @BeforeClass
     public void setUp() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     @Test

@@ -26,7 +26,7 @@ public class TfCoverageTest {
 
     @Test
     public void test() throws IOException, ReflectiveOperationException, URISyntaxException {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         // tensorflow-engine
         Engine.getEngine("TensorFlow");

@@ -24,7 +24,7 @@ import ai.djl.util.JsonUtils;
 
 import com.google.gson.JsonArray;
 
-import ml.dmlc.xgboost4j.java.ColumnBatch;
+//import ml.dmlc.xgboost4j.java.ColumnBatch;
 import ml.dmlc.xgboost4j.java.JniUtils;
 
 import java.nio.Buffer;
@@ -97,7 +97,7 @@ public class XgbNDManager extends BaseNDManager {
      * @param missing – missing value
      * @param nthread – threads number
      * @return a new instance of {@link NDArray}
-     */
+     
     public NDArray create(ColumnBatch columnBatch, float missing, int nthread) {
         columnBatch.getFeatureArrayInterface();
         String json = columnBatch.getFeatureArrayInterface();
@@ -112,7 +112,7 @@ public class XgbNDManager extends BaseNDManager {
         long handle = JniUtils.createDMatrix(columnBatch, missing, nthread);
         return new XgbNDArray(this, alternativeManager, handle, shape, SparseFormat.DENSE);
     }
-
+	*/
     /** {@inheritDoc} */
     @Override
     public NDArray create(Buffer data, Shape shape, DataType dataType) {

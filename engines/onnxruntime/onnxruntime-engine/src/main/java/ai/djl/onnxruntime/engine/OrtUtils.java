@@ -52,8 +52,8 @@ final class OrtUtils {
                     return OnnxTensor.createTensor(env, (LongBuffer) data, sh);
                 case INT8:
                     return OnnxTensor.createTensor(env, (ByteBuffer) data, sh, OnnxJavaType.INT8);
-                case UINT8:
-                    return OnnxTensor.createTensor(env, (ByteBuffer) data, sh, OnnxJavaType.UINT8);
+                //case UINT8:
+                    //return OnnxTensor.createTensor(env, (ByteBuffer) data, sh, OnnxJavaType.UINT8);
                 case STRING:
                     throw new UnsupportedOperationException(
                             "Use toTensor(OrtEnvironment env, String[] inputs, Shape shape)"
@@ -82,8 +82,8 @@ final class OrtUtils {
                 return DataType.FLOAT64;
             case INT8:
                 return DataType.INT8;
-            case UINT8:
-                return DataType.UINT8;
+           // case UINT8:
+               // return DataType.UINT8;
             case INT32:
                 return DataType.INT32;
             case INT64:

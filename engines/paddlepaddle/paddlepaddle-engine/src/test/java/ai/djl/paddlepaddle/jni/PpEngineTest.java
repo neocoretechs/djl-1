@@ -22,7 +22,7 @@ public class PpEngineTest {
 
     @Test
     public void testGetVersion() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         String version = PpEngine.getInstance().getVersion();
         Assert.assertEquals(version.split("\\.").length, 3);

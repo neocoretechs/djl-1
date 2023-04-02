@@ -33,7 +33,7 @@ public class MxParameterStoreTest {
 
     @Test
     public void testParameterStore() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
 
         try (Model model = Model.newInstance("model")) {
             NDManager manager = model.getNDManager();

@@ -56,7 +56,7 @@ public class MxSymbolBlockTest {
 
     @BeforeClass
     public void setUp() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     @Test

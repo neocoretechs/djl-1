@@ -184,7 +184,7 @@ public class OrtModel extends BaseModel {
 
         String disablePerSessionThreads = (String) options.get("disablePerSessionThreads");
         if (Boolean.parseBoolean(disablePerSessionThreads)) {
-            ortSession.disablePerSessionThreads();
+            //ortSession.disablePerSessionThreads();
         }
 
         String customOpLibrary = (String) options.get("customOpLibrary");
@@ -208,11 +208,11 @@ public class OrtModel extends BaseModel {
                     ortSession.addTensorrt(device.getDeviceId());
                     break;
                 case "ROCM":
-                    ortSession.addROCM();
-                    break;
+                    //ortSession.addROCM();
+                    //break;
                 case "CoreML":
-                    ortSession.addCoreML();
-                    break;
+                    //ortSession.addCoreML();
+                    //break;
                 default:
                     throw new IllegalArgumentException("Invalid ortDevice: " + ortDevice);
             }

@@ -15,12 +15,15 @@ package ai.djl.modality.cv.translator;
 import ai.djl.modality.cv.output.BoundingBox;
 import ai.djl.modality.cv.output.DetectedObjects;
 import ai.djl.modality.cv.output.Rectangle;
+import ai.djl.ndarray.NDArray;
 import ai.djl.ndarray.NDList;
 import ai.djl.ndarray.types.DataType;
+import ai.djl.ndarray.types.Shape;
 import ai.djl.translate.ArgumentsUtil;
 import ai.djl.translate.TranslatorContext;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -31,7 +34,7 @@ import java.util.PriorityQueue;
  * here: https://github.com/ultralytics/yolov5
  */
 public class YoloV5Translator extends ObjectDetectionTranslator {
-
+	public static final float BOX_THRESH   = 0.15f;//   0.25f;
     private YoloOutputType yoloOutputLayerType;
     private float nmsThreshold;
 
@@ -190,10 +193,29 @@ public class YoloV5Translator extends ObjectDetectionTranslator {
         }
         return nms(intermediateResults);
     }
-
-    private DetectedObjects processFromDetectOutput() {
-        throw new UnsupportedOperationException(
-                "detect layer output is not supported yet, check correct YoloV5 export format");
+    /**
+     * If output layer 0 shape has > 2 dimensions, or YOLO_OUTPUT_TYPE is DETECT
+     * we will assume its a multilayer YOLO export a la RKNN NPU.
+     * @param list
+     * @return
+     */
+    private DetectedObjects processFromDetectOutput(NDList list) {
+        //throw new UnsupportedOperationException(
+               // "detect layer output is not supported yet, check correct YoloV5 export format");
+    	/*
+    	Shape[] shapes = list.getShapes();
+    	System.out.println("Shape len:"+shapes.length+" "+Arrays.toString(shapes));
+    	System.out.println("List size:"+list.size());
+    	for(int i = 0; i < list.size(); i++) {
+    		System.out.println(i+"="+list.get(i).getShape().toString()+" dim="+list.get(i).getShape().dimension());
+    		NDArray n = list.get(i);
+    		System.out.println(n.getDataType()+" "+n.getName()+" "+n.size()+" "+n.toString());
+    		float[] f = n.toFloatArray();
+    		for(int j = 0; j < f.length; j++)
+    			System.out.println(j+"= "+f[j]);
+    	}
+    	*/
+    	return YoloV5SSDPostProcess.post_process(list, 640, 640, BOX_THRESH, nmsThreshold, 1.0f, 1.0f, classes);
     }
 
     /** {@inheritDoc} */
@@ -201,10 +223,10 @@ public class YoloV5Translator extends ObjectDetectionTranslator {
     public DetectedObjects processOutput(TranslatorContext ctx, NDList list) {
         switch (yoloOutputLayerType) {
             case DETECT:
-                return processFromDetectOutput();
+                return processFromDetectOutput(list);
             case AUTO:
                 if (list.get(0).getShape().dimension() > 2) {
-                    return processFromDetectOutput();
+                    return processFromDetectOutput(list);
                 } else {
                     return processFromBoxOutput(list);
                 }

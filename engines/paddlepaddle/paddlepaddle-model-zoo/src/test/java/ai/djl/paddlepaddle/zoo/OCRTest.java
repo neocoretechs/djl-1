@@ -39,7 +39,7 @@ public class OCRTest {
 
     @BeforeClass
     public void setUp() {
-        TestRequirements.notArm();
+        //TestRequirements.notArm();
     }
 
     @Test

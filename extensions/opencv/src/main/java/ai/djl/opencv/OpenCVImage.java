@@ -180,14 +180,14 @@ class OpenCVImage implements Image {
                             RandomUtils.nextInt(178));
             Imgproc.rectangle(image, rect.tl(), rect.br(), color, 2);
 
-            Size size = Imgproc.getTextSize(className, Imgproc.FONT_HERSHEY_PLAIN, 1.3, 1, null);
+            Size size = Imgproc.getTextSize(className, 1/*Imgproc.FONT_HERSHEY_PLAIN*/, 1.3, 1, null);
             Point br = new Point(x + size.width + 4, y + size.height + 4);
             Imgproc.rectangle(image, rect.tl(), br, color, -1);
 
             Point point = new Point(x, y + size.height + 2);
             color = new Scalar(255, 255, 255);
-            Imgproc.putText(image, className, point, Imgproc.FONT_HERSHEY_PLAIN, 1.3, color, 1);
-            // If we have a mask instead of a plain rectangle, draw tha mask
+            Imgproc.putText(image, className, point, 1/*Imgproc.FONT_HERSHEY_PLAIN*/, 1.3, color, 1);
+            // If we have a mask instead of a plain rectangle, draw mask
             if (box instanceof Mask) {
                 Mask mask = (Mask) box;
                 BufferedImage img = mat2Image(image);
@@ -214,7 +214,7 @@ class OpenCVImage implements Image {
             int x = (int) (joint.getX() * imageWidth);
             int y = (int) (joint.getY() * imageHeight);
             Point point = new Point(x, y);
-            Imgproc.circle(image, point, 6, color, -1, Imgproc.LINE_AA);
+            Imgproc.circle(image, point, 6, color, -1/*, Imgproc.LINE_AA*/);
         }
     }
 
@@ -302,16 +302,16 @@ class OpenCVImage implements Image {
         int h = image.height();
         int w = image.width();
 
-        Mat cHW = image.reshape(0, new int[] {c, h * w});
+        Mat cHW = image.reshape(0/*, new int[] {c, h * w}*/);
         Mat result = new Mat();
         result.create(h, w, CvType.makeType(image.depth(), c));
-        result = result.reshape(c, new int[] {h, w});
+        result = result.reshape(c/*, new int[] {h, w}*/);
         Core.transpose(cHW, result);
         return new OpenCVImage(result);
     }
 
     /**
-     * Converting from channel-las tto channel-first format.
+     * Converting from channel-last to channel-first format.
      *
      * @return channel first image
      */
@@ -319,10 +319,10 @@ class OpenCVImage implements Image {
         int c = image.channels();
         int h = image.height();
         int w = image.width();
-        Mat hWC = image.reshape(1, h * w);
+        Mat hWC = image.reshape(1/*, h * w*/);
         Mat result = new Mat();
         Core.transpose(hWC, result);
-        result = result.reshape(1, new int[] {c, h, w});
+        result = result.reshape(1/*, new int[] {c, h, w}*/);
         return new OpenCVImage(result);
     }
 
